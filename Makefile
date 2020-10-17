@@ -1,4 +1,4 @@
-INC=-I/home/howell/work/linux/include
+INC=-I/home/howell/work/linux/include -I/home/howell/work/linux/tools/perf/include
 
 .PHONY: clean all
 all: hwtc.o

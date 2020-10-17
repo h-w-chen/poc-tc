@@ -1,21 +1,17 @@
 #include <uapi/linux/bpf.h>		// required by struct __sk_buff
 #include <uapi/linux/pkt_cls.h>		// required by TC_ACT_OK
+#include <bpf/bpf.h>			// required by SEC()
 
-#ifndef __section
-# define __section(NAME)                  \
-   __attribute__((section(NAME), used))
-#endif
-
-__section("egress")
+SEC("egress")
 int tc_egress(struct __sk_buff *skb)
 {
     return TC_ACT_OK;
 }
 
-__section("egress-block")
+SEC("egress-block")
 int tc_egressblock(struct __sk_buff *skb)
 {
     return TC_ACT_SHOT;
 }
 
-char __license[] __section("license") = "GPL";
+char __license[] SEC("license") = "GPL";
