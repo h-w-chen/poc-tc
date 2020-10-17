@@ -7,9 +7,15 @@
 #endif
 
 __section("egress")
-int tc_ingress(struct __sk_buff *skb)
+int tc_egress(struct __sk_buff *skb)
 {
     return TC_ACT_OK;
+}
+
+__section("egress-block")
+int tc_egressblock(struct __sk_buff *skb)
+{
+    return TC_ACT_SHOT;
 }
 
 char __license[] __section("license") = "GPL";
